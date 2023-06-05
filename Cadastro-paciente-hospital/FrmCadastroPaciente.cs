@@ -16,5 +16,28 @@ namespace Cadastro_paciente_hospital
         {
             InitializeComponent();
         }
+
+        private void FrmCadastroPaciente_Load(object sender, EventArgs e)
+        {
+
+        }
+        private int CalcularIdade(DateTime dataNascimento)
+        {
+            DateTime dataAtual = DateTime.Today;
+            int idade = dataAtual.Year - dataNascimento.Year;
+            if (dataNascimento > dataAtual.AddYears(-idade))
+            {
+                idade--;
+            }
+            return idade;
+        }
+        private void dtpDataNasc_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dataNascimento = dtpDataNasc.Value;
+            int idade = CalcularIdade(dataNascimento);
+            lblExibirIdade.Text = $"Idade: {idade} anos";
+            lblExibirIdade.Visible = true;
+        }
     }
+
 }

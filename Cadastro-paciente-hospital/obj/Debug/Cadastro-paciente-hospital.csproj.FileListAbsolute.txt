@@ -1,0 +1,11 @@
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\bin\Debug\Cadastro-paciente-hospital.exe.config
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\bin\Debug\Cadastro-paciente-hospital.exe
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\bin\Debug\Cadastro-paciente-hospital.pdb
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.csproj.AssemblyReference.cache
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.csproj.SuggestedBindingRedirects.cache
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro_paciente_hospital.FrmCadastroPaciente.resources
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro_paciente_hospital.Properties.Resources.resources
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.csproj.GenerateResource.cache
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.csproj.CoreCompileInputs.cache
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.exe
+C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.pdb
