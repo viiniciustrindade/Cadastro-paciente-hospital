@@ -46,12 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaoConnection.cs" />
     <Compile Include="FrmCadastroPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCadastroPaciente.Designer.cs">
       <DependentUpon>FrmCadastroPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="PacienteDAO.cs" />
+    <Compile Include="PacienteModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmCadastroPaciente.resx">
