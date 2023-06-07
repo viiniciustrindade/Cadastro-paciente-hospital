@@ -289,5 +289,11 @@ namespace Cadastro_paciente_hospital
                 MessageBox.Show("Somente números são permitidos!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void btnInternacao_Click(object sender, EventArgs e)
+        {
+            Registro_de_internacao.FrmRegistroDeInternacao frmRegistroDeInternacao = new Registro_de_internacao.FrmRegistroDeInternacao();
+            frmRegistroDeInternacao.ShowDialog();
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroPaciente));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -79,8 +80,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.dadosGrid = new System.Windows.Forms.DataGridView();
-            this.label24 = new System.Windows.Forms.Label();
-            this.cbxUf = new System.Windows.Forms.ComboBox();
             this.colCodPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomePaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,6 +103,8 @@
             this.colContatoAlternativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelefoneContato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObeservacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cbxUf = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dadosGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -582,6 +583,7 @@
             this.btnInternacao.TabIndex = 26;
             this.btnInternacao.Text = "Internação";
             this.btnInternacao.UseVisualStyleBackColor = true;
+            this.btnInternacao.Click += new System.EventHandler(this.btnInternacao_Click);
             // 
             // btnExcluir
             // 
@@ -650,54 +652,6 @@
             this.dadosGrid.Size = new System.Drawing.Size(796, 217);
             this.dadosGrid.TabIndex = 27;
             this.dadosGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dadosGrid_CellMouseDoubleClick);
-            // 
-            // label24
-            // 
-            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(744, 144);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(21, 13);
-            this.label24.TabIndex = 52;
-            this.label24.Text = "UF";
-            // 
-            // cbxUf
-            // 
-            this.cbxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxUf.FormattingEnabled = true;
-            this.cbxUf.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.cbxUf.Location = new System.Drawing.Point(771, 141);
-            this.cbxUf.Name = "cbxUf";
-            this.cbxUf.Size = new System.Drawing.Size(39, 21);
-            this.cbxUf.TabIndex = 20;
             // 
             // colCodPaciente
             // 
@@ -880,6 +834,54 @@
             this.colObeservacoes.ReadOnly = true;
             this.colObeservacoes.Visible = false;
             // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(744, 144);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(21, 13);
+            this.label24.TabIndex = 52;
+            this.label24.Text = "UF";
+            // 
+            // cbxUf
+            // 
+            this.cbxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxUf.FormattingEnabled = true;
+            this.cbxUf.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.cbxUf.Location = new System.Drawing.Point(771, 141);
+            this.cbxUf.Name = "cbxUf";
+            this.cbxUf.Size = new System.Drawing.Size(39, 21);
+            this.cbxUf.TabIndex = 20;
+            // 
             // FrmCadastroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -938,8 +940,9 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCadastroPaciente";
-            this.Text = "Cadastro paciente";
+            this.Text = "Cadastro Paciente";
             this.Load += new System.EventHandler(this.FrmCadastroPaciente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dadosGrid)).EndInit();
             this.ResumeLayout(false);
