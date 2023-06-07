@@ -65,9 +65,9 @@ namespace Cadastro_paciente_hospital
                     DataGridViewRow row = dadosGrid.Rows[dadosGrid.Rows.Add()];
                     row.Cells[colCodPaciente.Index].Value = paciente.codPaciente;
                     row.Cells[colSexo.Index].Value = paciente.sexo;
-                    row.Cells[colDataNasc.Index].Value = paciente.dataNascimento;
+                    row.Cells[colDataNasc.Index].Value = paciente.dataNascimento.Substring(0, 10); ;
                     row.Cells[colNomePaciente.Index].Value = paciente.nomePaciente;
-                    row.Cells[colCpf.Index].Value = paciente.cpf;
+                    row.Cells[colCpf.Index].Value = paciente.cpf.Insert(9, "-").Insert(6, ".").Insert(3, ".");
                     row.Cells[colRg.Index].Value = paciente.rg;
                     row.Cells[colNacionalidade.Index].Value = paciente.nacionalidade;
                     row.Cells[colNaturalidade.Index].Value = paciente.naturalidade;
@@ -97,7 +97,7 @@ namespace Cadastro_paciente_hospital
             mskCpf.Text = "";
             mskRg.Text = "";
             txtNacionalidade.Text = "";
-            txtMãe.Text = "";
+            txtMae.Text = "";
             cbxCor.SelectedIndex = -1;
             txtEmail.Text = "";
             txtProfissao.Text = "";
@@ -114,7 +114,6 @@ namespace Cadastro_paciente_hospital
             mskTelefoneContatoAlternativo.Text = "";
             txtObservacoes.Text = "";
         }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -141,10 +140,10 @@ namespace Cadastro_paciente_hospital
                                 codPaciente = txtCodigo.Text,
                                 sexo = cbxSexo.Text,
                                 nomePaciente = txtNomePaciente.Text,
-                                cpf = mskCpf.Text,
-                                rg = mskRg.Text,
+                                cpf = mskCpf.Text.Replace(".", "").Replace("-", ""),
+                                rg = mskRg.Text.Replace(".", "").Replace("-", ""),
                                 nacionalidade = txtNacionalidade.Text,
-                                mae = txtMãe.Text,
+                                mae = txtMae.Text,
                                 cor = cbxCor.Text,
                                 email = txtEmail.Text,
                                 profissao = txtProfissao.Text,
@@ -153,13 +152,14 @@ namespace Cadastro_paciente_hospital
                                 grauDeInstrucao = cbxGrauInstucao.Text,
                                 responsavel = txtResponsavel.Text,
                                 cep = txtCep.Text,
+                                uf = cbxUf.Text,
                                 rua = txtRua.Text,
                                 bairro = txtBairro.Text,
                                 cidade = txtCidade.Text,
-                                telefone = mskTelefone.Text,
-                                celular = mskCelular.Text,
+                                telefone = mskTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
+                                celular = mskCelular.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 nomeContato = txtContatoAlternativo.Text,
-                                telefoneContato = mskTelefoneContatoAlternativo.Text,
+                                telefoneContato = mskTelefoneContatoAlternativo.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 observacoes = txtObservacoes.Text
                             });
                             MessageBox.Show("Registro do paciente atualizado com sucesso!");
@@ -171,10 +171,10 @@ namespace Cadastro_paciente_hospital
                             {
                                 sexo = cbxSexo.Text,
                                 nomePaciente = txtNomePaciente.Text,
-                                cpf = mskCpf.Text,
-                                rg = mskRg.Text,
+                                cpf = mskCpf.Text.Replace(".", "").Replace("-", ""),
+                                rg = mskRg.Text.Replace(".", "").Replace("-", ""),
                                 nacionalidade = txtNacionalidade.Text,
-                                mae = txtMãe.Text,
+                                mae = txtMae.Text,
                                 cor = cbxCor.Text,
                                 email = txtEmail.Text,
                                 profissao = txtProfissao.Text,
@@ -183,13 +183,14 @@ namespace Cadastro_paciente_hospital
                                 grauDeInstrucao = cbxGrauInstucao.Text,
                                 responsavel = txtResponsavel.Text,
                                 cep = txtCep.Text,
+                                uf = cbxUf.Text,
                                 rua = txtRua.Text,
                                 bairro = txtBairro.Text,
                                 cidade = txtCidade.Text,
-                                telefone = mskTelefone.Text,
-                                celular = mskCelular.Text,
+                                telefone = mskTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
+                                celular = mskCelular.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 nomeContato = txtContatoAlternativo.Text,
-                                telefoneContato = mskTelefoneContatoAlternativo.Text,
+                                telefoneContato = mskTelefoneContatoAlternativo.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 observacoes = txtObservacoes.Text
                             });
                             MessageBox.Show("Registro do paciente Salvo com sucesso!");
@@ -209,7 +210,84 @@ namespace Cadastro_paciente_hospital
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cbxSexo.Text))
+            {
+                MessageBox.Show("Paciente não foi selecionado!", "Atenção");
+                return;
+            }
+            DialogResult conf = MessageBox.Show("Deseja excluir o registro do paciente?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            try 
+            { 
+                if (conf == DialogResult.Yes)
+                { 
+                    using (SqlConnection connection = DaoConnection.GetConexao())
+                    {
+                        PacienteDAO dao = new PacienteDAO(connection);
+                            dao.Excluir(new PacienteModel()
+                            {
+                                codPaciente = txtCodigo.Text
+                            });
+                    }
+                    MessageBox.Show("Registro excluído com sucesso!");
+                    CarregarUsuariosGrid();
+                    ApagarCampos();
+                    LoadId();
+                    btnExcluir.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Houve um problema ao excluir o registro!\n{ex.Message}");
+            }
+        }
 
+        private void dadosGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            { 
+                txtCodigo.Text = dadosGrid.Rows[e.RowIndex].Cells[colCodPaciente.Index].Value + "";
+                txtNomePaciente.Text = dadosGrid.Rows[e.RowIndex].Cells[colNomePaciente.Index].Value + "";
+                cbxSexo.Text = dadosGrid.Rows[e.RowIndex].Cells[colSexo.Index].Value + "";
+                dtpDataNasc.Text = dadosGrid.Rows[e.RowIndex].Cells[colDataNasc.Index].Value + "";
+                mskCpf.Text = dadosGrid.Rows[e.RowIndex].Cells[colCpf.Index].Value + "";
+                mskRg.Text = dadosGrid.Rows[e.RowIndex].Cells[colRg.Index].Value + "";
+                txtNacionalidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colRg.Index].Value + "";
+                txtNaturalidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colNaturalidade.Index].Value + "";
+                txtMae.Text = dadosGrid.Rows[e.RowIndex].Cells[colMae.Index].Value + "";
+                cbxCor.Text = dadosGrid.Rows[e.RowIndex].Cells[colCor.Index].Value + "";
+                txtEmail.Text = dadosGrid.Rows[e.RowIndex].Cells[colEmail.Index].Value + "";
+                txtProfissao.Text = dadosGrid.Rows[e.RowIndex].Cells[colProfissao.Index].Value + "";
+                cbxGrauInstucao.Text = dadosGrid.Rows[e.RowIndex].Cells[colInstrucao.Index].Value + "";
+                txtResponsavel.Text = dadosGrid.Rows[e.RowIndex].Cells[colResponsavel.Index].Value + "";
+                txtCep.Text = dadosGrid.Rows[e.RowIndex].Cells[colCep.Index].Value + "";
+                txtRua.Text = dadosGrid.Rows[e.RowIndex].Cells[colRua.Index].Value + "";
+                txtBairro.Text = dadosGrid.Rows[e.RowIndex].Cells[colBairro.Index].Value + "";
+                txtCidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colCidade.Index].Value + "";
+                mskTelefone.Text = dadosGrid.Rows[e.RowIndex].Cells[colTelefone.Index].Value + "";
+                mskCelular.Text = dadosGrid.Rows[e.RowIndex].Cells[colTelefone.Index].Value + "";
+                mskTelefoneContatoAlternativo.Text = dadosGrid.Rows[e.RowIndex].Cells[colTelefoneContato.Index].Value + "";
+                txtContatoAlternativo.Text = dadosGrid.Rows[e.RowIndex].Cells[colContatoAlternativo.Index].Value + "";
+                txtObservacoes.Text = dadosGrid.Rows[e.RowIndex].Cells[colObeservacoes.Index].Value + "";
+
+                if (string.IsNullOrEmpty(this.cbxSexo.Text))
+                {
+                    btnExcluir.Enabled = false;
+                    LoadId();
+                }
+                else
+                {
+                    btnExcluir.Enabled = true;
+                }
+            }
+        }
+
+        private void txtCep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+                MessageBox.Show("Somente números são permitidos!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

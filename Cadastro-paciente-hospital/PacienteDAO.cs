@@ -148,7 +148,7 @@ namespace Cadastro_paciente_hospital
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine($"DELETE FROM mvtHospCadPac WHERE codPaciente = @codPaciente");
                 command.CommandText = sql.ToString();
-                command.Parameters.Add(new SqlParameter("@codAutor", paciente.codPaciente));
+                command.Parameters.Add(new SqlParameter("@codPaciente", paciente.codPaciente));
                 command.ExecuteNonQuery();
             }
         }
