@@ -52,6 +52,14 @@ namespace Cadastro_paciente_hospital
             int idade = CalcularIdade(dataNascimento);
             lblExibirIdade.Text = $"Idade: {idade} anos";
             lblExibirIdade.Visible = true;
+            if (idade >= 18)
+            {
+                txtResponsavel.Enabled = false;
+            }
+            else
+            {
+                txtResponsavel.Enabled = true;
+            }
         }
         private void CarregarUsuariosGrid()
         {
@@ -292,7 +300,7 @@ namespace Cadastro_paciente_hospital
 
         private void btnInternacao_Click(object sender, EventArgs e)
         {
-            Registro_de_internacao.FrmRegistroDeInternacao frmRegistroDeInternacao = new Registro_de_internacao.FrmRegistroDeInternacao();
+            Registro_de_internacao.btnExcluir frmRegistroDeInternacao = new Registro_de_internacao.btnExcluir();
             frmRegistroDeInternacao.ShowDialog();
         }
     }
