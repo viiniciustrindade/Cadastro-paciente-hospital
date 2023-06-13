@@ -20,7 +20,6 @@ C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.csproj.CoreCompileInputs.cache
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.exe
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.pdb
-C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Registro-de-internacao.exe
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Registro-de-internacao.pdb
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Registro-de-internacao.exe.config
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.csproj.CopyComplete
