@@ -5,10 +5,14 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Cadastro_paciente_hospital
 {
@@ -29,7 +33,7 @@ namespace Cadastro_paciente_hospital
                 txtCodigo.Text = proximoID.ToString();
             }
         }
-        private void FrmCadastroPaciente_Load(object sender, EventArgs e)
+            private void FrmCadastroPaciente_Load(object sender, EventArgs e)
         {
             CarregarUsuariosGrid();
             LoadId();
@@ -50,16 +54,9 @@ namespace Cadastro_paciente_hospital
         {
             DateTime dataNascimento = dtpDataNasc.Value;
             int idade = CalcularIdade(dataNascimento);
-            lblExibirIdade.Text = $"Idade: {idade} anos";
+            lblExibirIdade.Text = $"{idade} anos";
             lblExibirIdade.Visible = true;
-            if (idade >= 18)
-            {
-                txtResponsavel.Enabled = false;
-            }
-            else
-            {
-                txtResponsavel.Enabled = true;
-            }
+ 
         }
         private void CarregarUsuariosGrid()
         {
@@ -106,7 +103,7 @@ namespace Cadastro_paciente_hospital
             mskRg.Text = "";
             txtNacionalidade.Text = "";
             txtMae.Text = "";
-            cbxCor.SelectedIndex = -1;
+            cbxCor.Text = "";
             txtEmail.Text = "";
             txtProfissao.Text = "";
             txtNaturalidade.Text = "";
@@ -259,7 +256,7 @@ namespace Cadastro_paciente_hospital
                 dtpDataNasc.Text = dadosGrid.Rows[e.RowIndex].Cells[colDataNasc.Index].Value + "";
                 mskCpf.Text = dadosGrid.Rows[e.RowIndex].Cells[colCpf.Index].Value + "";
                 mskRg.Text = dadosGrid.Rows[e.RowIndex].Cells[colRg.Index].Value + "";
-                txtNacionalidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colRg.Index].Value + "";
+                txtNacionalidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colNacionalidade.Index].Value + "";
                 txtNaturalidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colNaturalidade.Index].Value + "";
                 txtMae.Text = dadosGrid.Rows[e.RowIndex].Cells[colMae.Index].Value + "";
                 cbxCor.Text = dadosGrid.Rows[e.RowIndex].Cells[colCor.Index].Value + "";
@@ -300,8 +297,23 @@ namespace Cadastro_paciente_hospital
 
         private void btnInternacao_Click(object sender, EventArgs e)
         {
-            Registro_de_internacao.btnExcluir frmRegistroDeInternacao = new Registro_de_internacao.btnExcluir();
+            Registro_de_internacao.FrmRegistroDeInternacao frmRegistroDeInternacao = new Registro_de_internacao.FrmRegistroDeInternacao();
             frmRegistroDeInternacao.ShowDialog();
+        }
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            string email = txtEmail.Text;
+
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("O e-mail fornecido não é válido.", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true; 
+            }
+        }
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, pattern);
         }
     }
 }
