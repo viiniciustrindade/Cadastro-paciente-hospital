@@ -38,7 +38,7 @@ namespace Cadastro_paciente_hospital
             CarregarUsuariosGrid();
             LoadId();
             btnExcluir.Enabled = false;
-            cbxSituacao.Text = "Vivo";
+            cbxSituacao.Text = "Alta";
 
         }
         private int CalcularIdade(DateTime dataNascimento)
@@ -122,7 +122,7 @@ namespace Cadastro_paciente_hospital
             txtObservacoes.Text = "";
             cbxSituacao.Visible = false;
             label25.Visible = false;
-            cbxSituacao.Text = "Vivo";
+            cbxSituacao.Text = "Alta";
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
