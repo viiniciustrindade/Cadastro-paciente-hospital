@@ -102,11 +102,14 @@
             this.colContatoAlternativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelefoneContato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObeservacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label24 = new System.Windows.Forms.Label();
             this.cbxUf = new System.Windows.Forms.ComboBox();
             this.cbxCor = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbxSituacao = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dadosGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -212,6 +215,7 @@
             this.mskCpf.Name = "mskCpf";
             this.mskCpf.Size = new System.Drawing.Size(104, 20);
             this.mskCpf.TabIndex = 5;
+            this.mskCpf.Validating += new System.ComponentModel.CancelEventHandler(this.mskCpf_Validating);
             // 
             // label6
             // 
@@ -229,6 +233,7 @@
             this.mskRg.Name = "mskRg";
             this.mskRg.Size = new System.Drawing.Size(81, 20);
             this.mskRg.TabIndex = 6;
+            this.mskRg.Validating += new System.ComponentModel.CancelEventHandler(this.mskRg_Validating);
             // 
             // label7
             // 
@@ -588,13 +593,14 @@
             this.colCelular,
             this.colContatoAlternativo,
             this.colTelefoneContato,
-            this.colObeservacoes});
-            this.dadosGrid.Location = new System.Drawing.Point(14, 355);
+            this.colObeservacoes,
+            this.colSituacao});
+            this.dadosGrid.Location = new System.Drawing.Point(14, 357);
             this.dadosGrid.Name = "dadosGrid";
             this.dadosGrid.ReadOnly = true;
             this.dadosGrid.RowHeadersWidth = 51;
             this.dadosGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dadosGrid.Size = new System.Drawing.Size(856, 190);
+            this.dadosGrid.Size = new System.Drawing.Size(856, 261);
             this.dadosGrid.TabIndex = 27;
             this.dadosGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dadosGrid_CellMouseDoubleClick);
             // 
@@ -779,6 +785,13 @@
             this.colObeservacoes.ReadOnly = true;
             this.colObeservacoes.Visible = false;
             // 
+            // colSituacao
+            // 
+            this.colSituacao.HeaderText = "Situação";
+            this.colSituacao.Name = "colSituacao";
+            this.colSituacao.ReadOnly = true;
+            this.colSituacao.Visible = false;
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -899,11 +912,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Endereço";
             // 
+            // cbxSituacao
+            // 
+            this.cbxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSituacao.FormattingEnabled = true;
+            this.cbxSituacao.Items.AddRange(new object[] {
+            "Vivo",
+            "Óbito"});
+            this.cbxSituacao.Location = new System.Drawing.Point(105, 330);
+            this.cbxSituacao.Name = "cbxSituacao";
+            this.cbxSituacao.Size = new System.Drawing.Size(118, 21);
+            this.cbxSituacao.TabIndex = 56;
+            this.cbxSituacao.Visible = false;
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(30, 333);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(49, 13);
+            this.label25.TabIndex = 57;
+            this.label25.Text = "Situação";
+            this.label25.Visible = false;
+            // 
             // FrmCadastroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 555);
+            this.ClientSize = new System.Drawing.Size(882, 628);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.cbxSituacao);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dadosGrid);
@@ -1006,6 +1045,9 @@
         private System.Windows.Forms.TextBox cbxCor;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cbxSituacao;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSituacao;
     }
 }
 

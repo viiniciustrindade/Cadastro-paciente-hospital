@@ -24,9 +24,9 @@ namespace Cadastro_paciente_hospital
                 {
                     StringBuilder sql = new StringBuilder();
                     sql.AppendLine("INSERT INTO mvtHospCadPac (sexoPaciente, dataNascPaciente, nomePaciente, nomeMaePaciente, cpfPaciente, rgPaciente, corPaciente, nacionalidade, naturalidade," +
-                        "grauDeInstrucao, profissao, responsavel, cep, bairro, cidade, telefone, telefoneCelular, uf, contatoAlternativo, telefoneContatoAlternativo, emailPaciente, oberservacaoPaciente) " +
+                        "grauDeInstrucao, profissao, responsavel, cep, bairro, cidade, telefone, telefoneCelular, uf, contatoAlternativo, telefoneContatoAlternativo, emailPaciente, oberservacaoPaciente, situacao) " +
                         "VALUES(@sexoPaciente, @dataNascPaciente, @nomePaciente, @nomeMaePaciente, @cpfPaciente, @rgPaciente, @corPaciente, @nacionalidade, @naturalidade," +
-                        "@grauDeInstrucao, @profissao, @responsavel, @cep, @bairro, @cidade, @telefone, @telefoneCelular, @uf, @contatoAlternativo, @telefoneContatoAlternativo, @emailPaciente, @observacaoPaciente)");
+                        "@grauDeInstrucao, @profissao, @responsavel, @cep, @bairro, @cidade, @telefone, @telefoneCelular, @uf, @contatoAlternativo, @telefoneContatoAlternativo, @emailPaciente, @observacaoPaciente, @situacao)");
                     command.CommandText = sql.ToString();
                     command.Parameters.Add(new SqlParameter("@sexoPaciente", paciente.sexo));
                     command.Parameters.Add(new SqlParameter("@dataNascPaciente", paciente.dataNascimento));
@@ -50,6 +50,7 @@ namespace Cadastro_paciente_hospital
                     command.Parameters.Add(new SqlParameter("@telefoneContatoAlternativo", paciente.telefoneContato));
                     command.Parameters.Add(new SqlParameter("@emailPaciente", paciente.email));
                     command.Parameters.Add(new SqlParameter("@observacaoPaciente", paciente.observacoes));
+                    command.Parameters.Add(new SqlParameter("@situacao", paciente.situacao));
                     command.Transaction = t;
                     command.ExecuteNonQuery();
                     t.Commit();
@@ -100,7 +101,7 @@ namespace Cadastro_paciente_hospital
                     sql.AppendLine($"UPDATE mvtHospCadPac SET sexoPaciente = @sexoPaciente, dataNascPaciente = @dataNascPaciente, nomePaciente = @nomePaciente, nomeMaePaciente = @nomeMaePaciente, cpfPaciente = @cpfPaciente," +
                         $"rgPaciente = @rgPaciente, corPaciente = @corPaciente, nacionalidade = @nacionalidade, naturalidade = @naturalidade, grauDeInstrucao = @grauDeInstrucao," +
                         $"profissao = @profissao, responsavel = @responsavel, cep = @cep, bairro = @bairro, cidade = @cidade, telefone = @telefone, telefoneCelular = @telefoneCelular, uf = @uf," +
-                        $"contatoAlternativo = @contatoAlternativo, telefoneContatoAlternativo = @telefoneContatoAlternativo, emailPaciente = @emailPaciente, oberservacaoPaciente = @observacaoPaciente WHERE codPaciente = @codPaciente");
+                        $"contatoAlternativo = @contatoAlternativo, telefoneContatoAlternativo = @telefoneContatoAlternativo, emailPaciente = @emailPaciente, oberservacaoPaciente = @observacaoPaciente, situacao = @situacao WHERE codPaciente = @codPaciente");
                     command.CommandText = sql.ToString();
                     command.Parameters.AddWithValue("@codPaciente", paciente.codPaciente);
                     command.Parameters.Add(new SqlParameter("@sexoPaciente", paciente.sexo));
@@ -125,6 +126,7 @@ namespace Cadastro_paciente_hospital
                     command.Parameters.Add(new SqlParameter("@telefoneContatoAlternativo", paciente.telefoneContato));
                     command.Parameters.Add(new SqlParameter("@emailPaciente", paciente.email));
                     command.Parameters.Add(new SqlParameter("@observacaoPaciente", paciente.observacoes));
+                    command.Parameters.Add(new SqlParameter("@situacao", paciente.situacao));
                     command.Transaction = t;
                     command.ExecuteNonQuery();
                     t.Commit();
@@ -135,6 +137,30 @@ namespace Cadastro_paciente_hospital
                     t.Rollback();
                     throw ex;
                 }
+            }
+        }
+        public int VerficaCpf(PacienteModel paciente)
+        {
+            using (SqlCommand command = Connection.CreateCommand())
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine($"SELECT COUNT(cpfPaciente) FROM mvtHospCadPac WHERE cpfPaciente = @cpfPaciente");
+                command.CommandText = sql.ToString();
+                command.Parameters.AddWithValue("@cpfPaciente", paciente.cpf);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count;
+            }
+        }
+        public int VerficaRg(PacienteModel paciente)
+        {
+            using (SqlCommand command = Connection.CreateCommand())
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine($"SELECT COUNT(rgPaciente) FROM mvtHospCadPac WHERE rgPaciente = @rgPaciente");
+                command.CommandText = sql.ToString();
+                command.Parameters.AddWithValue("@rgPaciente", paciente.rg);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count;
             }
         }
         public void Excluir(PacienteModel paciente, SqlTransaction t = null)
@@ -158,7 +184,7 @@ namespace Cadastro_paciente_hospital
             SqlCommand command = Connection.CreateCommand();
             StringBuilder sql = new StringBuilder();
             sql.AppendLine("SELECT codPaciente, sexoPaciente, dataNascPaciente, nomePaciente, nomeMaePaciente, cpfPaciente, rgPaciente, corPaciente, nacionalidade, naturalidade," +
-                "grauDeInstrucao, profissao, responsavel, cep, bairro, cidade, telefone, telefoneCelular, uf, contatoAlternativo, telefoneContatoAlternativo, emailPaciente, oberservacaoPaciente" +
+                "grauDeInstrucao, profissao, responsavel, cep, bairro, cidade, telefone, telefoneCelular, uf, contatoAlternativo, telefoneContatoAlternativo, emailPaciente, oberservacaoPaciente, situacao" +
                 " FROM mvtHospCadPac ORDER BY codPaciente ASC");
             command.CommandText = sql.ToString();
             using (SqlDataReader dr = command.ExecuteReader())
@@ -196,6 +222,7 @@ namespace Cadastro_paciente_hospital
             string telefoneContatoAlternativo = "";
             string emailPaciente = "";
             string oberservacaoPaciente = "";
+            string situacao = "";
 
             if (DBNull.Value != dr["codPaciente"])
             {
@@ -289,6 +316,10 @@ namespace Cadastro_paciente_hospital
             {
                 oberservacaoPaciente = dr["oberservacaoPaciente"] + "";
             }
+            if (DBNull.Value != dr["situacao"])
+            {
+                situacao = dr["situacao"] + "";
+            }
             return new PacienteModel()
             {
                 codPaciente = codPaciente,
@@ -313,7 +344,8 @@ namespace Cadastro_paciente_hospital
                 nomeContato = contatoAlternativo,
                 telefoneContato = telefoneContatoAlternativo,
                 email = emailPaciente,
-                observacoes = oberservacaoPaciente
+                observacoes = oberservacaoPaciente,
+                situacao = situacao
             };
         }
     }

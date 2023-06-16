@@ -32,5 +32,6 @@ namespace Cadastro_paciente_hospital
         public string nomeContato { get; set; }
         public string telefoneContato { get; set; }
         public string observacoes { get; set; }
+        public string situacao { get; set; }
     }
 }

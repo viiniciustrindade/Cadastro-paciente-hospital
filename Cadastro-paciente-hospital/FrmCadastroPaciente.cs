@@ -38,6 +38,7 @@ namespace Cadastro_paciente_hospital
             CarregarUsuariosGrid();
             LoadId();
             btnExcluir.Enabled = false;
+            cbxSituacao.Text = "Vivo";
 
         }
         private int CalcularIdade(DateTime dataNascimento)
@@ -91,6 +92,7 @@ namespace Cadastro_paciente_hospital
                     row.Cells[colContatoAlternativo.Index].Value = paciente.nomeContato;
                     row.Cells[colTelefoneContato.Index].Value = paciente.telefoneContato;
                     row.Cells[colObeservacoes.Index].Value = paciente.observacoes;
+                    row.Cells[colSituacao.Index].Value = paciente.situacao;
                 }
             }
         }
@@ -118,6 +120,9 @@ namespace Cadastro_paciente_hospital
             txtContatoAlternativo.Text = "";
             mskTelefoneContatoAlternativo.Text = "";
             txtObservacoes.Text = "";
+            cbxSituacao.Visible = false;
+            label25.Visible = false;
+            cbxSituacao.Text = "Vivo";
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -140,6 +145,7 @@ namespace Cadastro_paciente_hospital
 
                         if (count > 0)
                         {
+                           
                             dao.Alterar(new PacienteModel()
                             {
                                 codPaciente = txtCodigo.Text,
@@ -165,7 +171,8 @@ namespace Cadastro_paciente_hospital
                                 celular = mskCelular.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 nomeContato = txtContatoAlternativo.Text,
                                 telefoneContato = mskTelefoneContatoAlternativo.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
-                                observacoes = txtObservacoes.Text
+                                observacoes = txtObservacoes.Text,
+                                situacao = cbxSituacao.Text
                             });
                             MessageBox.Show("Registro do paciente atualizado com sucesso!");
                             ApagarCampos();
@@ -196,7 +203,8 @@ namespace Cadastro_paciente_hospital
                                 celular = mskCelular.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 nomeContato = txtContatoAlternativo.Text,
                                 telefoneContato = mskTelefoneContatoAlternativo.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
-                                observacoes = txtObservacoes.Text
+                                observacoes = txtObservacoes.Text,
+                                situacao = cbxSituacao.Text
                             });
                             MessageBox.Show("Registro do paciente Salvo com sucesso!");
                             ApagarCampos();
@@ -273,7 +281,7 @@ namespace Cadastro_paciente_hospital
                 mskTelefoneContatoAlternativo.Text = dadosGrid.Rows[e.RowIndex].Cells[colTelefoneContato.Index].Value + "";
                 txtContatoAlternativo.Text = dadosGrid.Rows[e.RowIndex].Cells[colContatoAlternativo.Index].Value + "";
                 txtObservacoes.Text = dadosGrid.Rows[e.RowIndex].Cells[colObeservacoes.Index].Value + "";
-
+                cbxSituacao.Text = dadosGrid.Rows[e.RowIndex].Cells[colSituacao.Index].Value + "";
                 if (string.IsNullOrEmpty(this.cbxSexo.Text))
                 {
                     btnExcluir.Enabled = false;
@@ -282,6 +290,8 @@ namespace Cadastro_paciente_hospital
                 else
                 {
                     btnExcluir.Enabled = true;
+                    cbxSituacao.Visible = true;
+                    label25.Visible = true;
                 }
             }
         }
@@ -314,6 +324,33 @@ namespace Cadastro_paciente_hospital
         {
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
+        }
+        private void mskCpf_Validating(object sender, CancelEventArgs e)
+        {
+            using (SqlConnection connection = DaoConnection.GetConexao())
+            {
+                PacienteDAO dao = new PacienteDAO(connection);
+                int count = dao.VerficaCpf(new PacienteModel()
+                {
+                    cpf = mskCpf.Text.Replace(".", "").Replace("-", "")
+                });
+                if (count > 0)
+                { MessageBox.Show("O CPF fornecido ja foi cadastrado.", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error); e.Cancel = true; }
+            }
+        }
+
+        private void mskRg_Validating(object sender, CancelEventArgs e)
+        {
+            using (SqlConnection connection = DaoConnection.GetConexao())
+            {
+                PacienteDAO dao = new PacienteDAO(connection);
+                int count = dao.VerficaRg(new PacienteModel()
+                {
+                    rg = mskRg.Text.Replace(".", "").Replace("-", "")
+                });
+                if (count > 0)
+                { MessageBox.Show("O RG fornecido ja foi cadastrado.", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error); e.Cancel = true; }
+            }
         }
     }
 }
