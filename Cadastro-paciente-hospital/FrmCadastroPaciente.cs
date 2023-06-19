@@ -35,10 +35,11 @@ namespace Cadastro_paciente_hospital
         }
             private void FrmCadastroPaciente_Load(object sender, EventArgs e)
         {
+
             CarregarUsuariosGrid();
             LoadId();
             btnExcluir.Enabled = false;
-            cbxSituacao.Text = "Alta";
+            cbxSituacao.Text = "Alta"; 
 
         }
         private int CalcularIdade(DateTime dataNascimento)
