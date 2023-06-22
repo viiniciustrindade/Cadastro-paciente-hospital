@@ -18,19 +18,22 @@ namespace Cadastro_paciente_hospital
 {
     public partial class FrmCadastroPaciente : Form
     {
+        public string guardaId { get; set; }
+        public string guardaNome { get; set; }
+        public string guardaIdade { get; set; }
+        public string guardaMae { get; set; }
+
         public FrmCadastroPaciente()
         {
             InitializeComponent();
         }
+
         private void LoadId()
         {
             using (SqlConnection connection = DaoConnection.GetConexao())
             {
-                SqlCommand cmd = new SqlCommand("SELECT IDENT_CURRENT('mvtHospCadPac') + 1", connection);
-                int proximoID = Convert.ToInt32(cmd.ExecuteScalar());
-
-
-                txtCodigo.Text = proximoID.ToString();
+               PacienteDAO dao = new PacienteDAO(connection);
+               txtCodigo.Text = dao.CarregarID().ToString();
             }
         }
             private void FrmCadastroPaciente_Load(object sender, EventArgs e)
@@ -58,7 +61,6 @@ namespace Cadastro_paciente_hospital
             int idade = CalcularIdade(dataNascimento);
             lblExibirIdade.Text = $"{idade} anos";
             lblExibirIdade.Visible = true;
- 
         }
         private void CarregarUsuariosGrid()
         {
@@ -72,9 +74,9 @@ namespace Cadastro_paciente_hospital
                     DataGridViewRow row = dadosGrid.Rows[dadosGrid.Rows.Add()];
                     row.Cells[colCodPaciente.Index].Value = paciente.codPaciente;
                     row.Cells[colSexo.Index].Value = paciente.sexo;
-                    row.Cells[colDataNasc.Index].Value = paciente.dataNascimento.Substring(0, 10); ;
+                    row.Cells[colDataNasc.Index].Value = paciente.dataNascimento;
                     row.Cells[colNomePaciente.Index].Value = paciente.nomePaciente;
-                    row.Cells[colCpf.Index].Value = paciente.cpf.Insert(9, "-").Insert(6, ".").Insert(3, ".");
+                    row.Cells[colCpf.Index].Value = paciente.cpf;
                     row.Cells[colRg.Index].Value = paciente.rg;
                     row.Cells[colNacionalidade.Index].Value = paciente.nacionalidade;
                     row.Cells[colNaturalidade.Index].Value = paciente.naturalidade;
@@ -85,6 +87,7 @@ namespace Cadastro_paciente_hospital
                     row.Cells[colInstrucao.Index].Value = paciente.grauDeInstrucao;
                     row.Cells[colResponsavel.Index].Value = paciente.responsavel;
                     row.Cells[colCep.Index].Value = paciente.cep;
+                    row.Cells[colUf.Index].Value = paciente.uf;
                     row.Cells[colRua.Index].Value = paciente.rua;
                     row.Cells[colBairro.Index].Value = paciente.bairro;
                     row.Cells[colCidade.Index].Value = paciente.cidade;
@@ -269,6 +272,7 @@ namespace Cadastro_paciente_hospital
                 txtNaturalidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colNaturalidade.Index].Value + "";
                 txtMae.Text = dadosGrid.Rows[e.RowIndex].Cells[colMae.Index].Value + "";
                 cbxCor.Text = dadosGrid.Rows[e.RowIndex].Cells[colCor.Index].Value + "";
+                cbxUf.Text = dadosGrid.Rows[e.RowIndex].Cells[colUf.Index].Value + "";
                 txtEmail.Text = dadosGrid.Rows[e.RowIndex].Cells[colEmail.Index].Value + "";
                 txtProfissao.Text = dadosGrid.Rows[e.RowIndex].Cells[colProfissao.Index].Value + "";
                 cbxGrauInstucao.Text = dadosGrid.Rows[e.RowIndex].Cells[colInstrucao.Index].Value + "";
@@ -278,7 +282,7 @@ namespace Cadastro_paciente_hospital
                 txtBairro.Text = dadosGrid.Rows[e.RowIndex].Cells[colBairro.Index].Value + "";
                 txtCidade.Text = dadosGrid.Rows[e.RowIndex].Cells[colCidade.Index].Value + "";
                 mskTelefone.Text = dadosGrid.Rows[e.RowIndex].Cells[colTelefone.Index].Value + "";
-                mskCelular.Text = dadosGrid.Rows[e.RowIndex].Cells[colTelefone.Index].Value + "";
+                mskCelular.Text = dadosGrid.Rows[e.RowIndex].Cells[colCelular.Index].Value + "";
                 mskTelefoneContatoAlternativo.Text = dadosGrid.Rows[e.RowIndex].Cells[colTelefoneContato.Index].Value + "";
                 txtContatoAlternativo.Text = dadosGrid.Rows[e.RowIndex].Cells[colContatoAlternativo.Index].Value + "";
                 txtObservacoes.Text = dadosGrid.Rows[e.RowIndex].Cells[colObeservacoes.Index].Value + "";
@@ -294,6 +298,20 @@ namespace Cadastro_paciente_hospital
                     cbxSituacao.Visible = true;
                     label25.Visible = true;
                 }
+                guardaId = txtCodigo.Text;
+                guardaNome = txtNomePaciente.Text;
+                guardaMae = txtMae.Text;
+                guardaIdade = lblExibirIdade.Text;
+
+                if(cbxSituacao.Text == "Alta"||cbxSituacao.Text == "Evasão")
+                {
+                    btnInternacao.Enabled = true;
+                }
+                else 
+                {
+                    btnInternacao.Enabled=false;
+                }
+
             }
         }
 
@@ -308,8 +326,9 @@ namespace Cadastro_paciente_hospital
 
         private void btnInternacao_Click(object sender, EventArgs e)
         {
-            Registro_de_internacao.FrmRegistroDeInternacao frmRegistroDeInternacao = new Registro_de_internacao.FrmRegistroDeInternacao();
+            Registro_de_internacao.FrmRegistroDeInternacao frmRegistroDeInternacao = new Registro_de_internacao.FrmRegistroDeInternacao(guardaId, guardaNome, guardaMae, guardaIdade);
             frmRegistroDeInternacao.ShowDialog();
+
         }
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
