@@ -302,8 +302,8 @@ namespace Cadastro_paciente_hospital
                 guardaNome = txtNomePaciente.Text;
                 guardaMae = txtMae.Text;
                 guardaIdade = lblExibirIdade.Text;
-
-                if(cbxSituacao.Text == "Alta"||cbxSituacao.Text == "Evasão")
+                CarregarUsuariosGrid();
+                if (cbxSituacao.Text == "Alta"||cbxSituacao.Text == "Evasão")
                 {
                     btnInternacao.Enabled = true;
                 }

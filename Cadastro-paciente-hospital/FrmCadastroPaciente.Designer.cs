@@ -79,14 +79,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.dadosGrid = new System.Windows.Forms.DataGridView();
-            this.label24 = new System.Windows.Forms.Label();
-            this.cbxUf = new System.Windows.Forms.ComboBox();
-            this.cbxCor = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbxSituacao = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.colCodPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomePaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,6 +104,14 @@
             this.colTelefoneContato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObeservacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cbxUf = new System.Windows.Forms.ComboBox();
+            this.cbxCor = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbxSituacao = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dadosGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -251,7 +251,7 @@
             // 
             this.txtMae.Location = new System.Drawing.Point(91, 51);
             this.txtMae.Name = "txtMae";
-            this.txtMae.Size = new System.Drawing.Size(209, 20);
+            this.txtMae.Size = new System.Drawing.Size(224, 20);
             this.txtMae.TabIndex = 4;
             // 
             // label8
@@ -487,13 +487,13 @@
             // 
             this.txtContatoAlternativo.Location = new System.Drawing.Point(452, 28);
             this.txtContatoAlternativo.Name = "txtContatoAlternativo";
-            this.txtContatoAlternativo.Size = new System.Drawing.Size(154, 20);
+            this.txtContatoAlternativo.Size = new System.Drawing.Size(139, 20);
             this.txtContatoAlternativo.TabIndex = 16;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(611, 32);
+            this.label22.Location = new System.Drawing.Point(597, 32);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(140, 13);
             this.label22.TabIndex = 44;
@@ -501,10 +501,10 @@
             // 
             // mskTelefoneContatoAlternativo
             // 
-            this.mskTelefoneContatoAlternativo.Location = new System.Drawing.Point(758, 28);
+            this.mskTelefoneContatoAlternativo.Location = new System.Drawing.Point(743, 28);
             this.mskTelefoneContatoAlternativo.Mask = "(00)00000-0000";
             this.mskTelefoneContatoAlternativo.Name = "mskTelefoneContatoAlternativo";
-            this.mskTelefoneContatoAlternativo.Size = new System.Drawing.Size(96, 20);
+            this.mskTelefoneContatoAlternativo.Size = new System.Drawing.Size(111, 20);
             this.mskTelefoneContatoAlternativo.TabIndex = 17;
             // 
             // label23
@@ -608,165 +608,6 @@
             this.dadosGrid.Size = new System.Drawing.Size(864, 222);
             this.dadosGrid.TabIndex = 27;
             this.dadosGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dadosGrid_CellMouseDoubleClick);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(785, 29);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(21, 13);
-            this.label24.TabIndex = 52;
-            this.label24.Text = "UF";
-            // 
-            // cbxUf
-            // 
-            this.cbxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxUf.FormattingEnabled = true;
-            this.cbxUf.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.cbxUf.Location = new System.Drawing.Point(812, 26);
-            this.cbxUf.Name = "cbxUf";
-            this.cbxUf.Size = new System.Drawing.Size(42, 21);
-            this.cbxUf.TabIndex = 21;
-            // 
-            // cbxCor
-            // 
-            this.cbxCor.Location = new System.Drawing.Point(259, 77);
-            this.cbxCor.Name = "cbxCor";
-            this.cbxCor.Size = new System.Drawing.Size(83, 20);
-            this.cbxCor.TabIndex = 9;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cbxCor);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtCodigo);
-            this.groupBox1.Controls.Add(this.cbxSexo);
-            this.groupBox1.Controls.Add(this.dtpDataNasc);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.lblExibirIdade);
-            this.groupBox1.Controls.Add(this.txtNomePaciente);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.mskCpf);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.mskRg);
-            this.groupBox1.Controls.Add(this.mskTelefone);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.txtMae);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.mskCelular);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtNacionalidade);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtNaturalidade);
-            this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.cbxGrauInstucao);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.txtProfissao);
-            this.groupBox1.Location = new System.Drawing.Point(6, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(872, 140);
-            this.groupBox1.TabIndex = 54;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dados pessoais";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.txtCep);
-            this.groupBox2.Controls.Add(this.cbxUf);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label24);
-            this.groupBox2.Controls.Add(this.txtRua);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.txtBairro);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.txtCidade);
-            this.groupBox2.Location = new System.Drawing.Point(6, 229);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(872, 91);
-            this.groupBox2.TabIndex = 55;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Endereço";
-            // 
-            // cbxSituacao
-            // 
-            this.cbxSituacao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxSituacao.FormattingEnabled = true;
-            this.cbxSituacao.Items.AddRange(new object[] {
-            "Alta",
-            "Óbito",
-            "Internado",
-            "Evasão"});
-            this.cbxSituacao.Location = new System.Drawing.Point(97, 369);
-            this.cbxSituacao.Name = "cbxSituacao";
-            this.cbxSituacao.Size = new System.Drawing.Size(118, 21);
-            this.cbxSituacao.TabIndex = 56;
-            this.cbxSituacao.Visible = false;
-            // 
-            // label25
-            // 
-            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(21, 372);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(49, 13);
-            this.label25.TabIndex = 57;
-            this.label25.Text = "Situação";
-            this.label25.Visible = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox3.Controls.Add(this.txtResponsavel);
-            this.groupBox3.Controls.Add(this.mskTelefoneContatoAlternativo);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Controls.Add(this.txtContatoAlternativo);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Location = new System.Drawing.Point(6, 157);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(872, 67);
-            this.groupBox3.TabIndex = 58;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Contato terceiros";
             // 
             // colCodPaciente
             // 
@@ -967,6 +808,166 @@
             this.colSituacao.Name = "colSituacao";
             this.colSituacao.ReadOnly = true;
             this.colSituacao.Visible = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(785, 29);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(21, 13);
+            this.label24.TabIndex = 52;
+            this.label24.Text = "UF";
+            // 
+            // cbxUf
+            // 
+            this.cbxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxUf.FormattingEnabled = true;
+            this.cbxUf.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.cbxUf.Location = new System.Drawing.Point(812, 26);
+            this.cbxUf.Name = "cbxUf";
+            this.cbxUf.Size = new System.Drawing.Size(42, 21);
+            this.cbxUf.TabIndex = 21;
+            // 
+            // cbxCor
+            // 
+            this.cbxCor.Location = new System.Drawing.Point(259, 77);
+            this.cbxCor.Name = "cbxCor";
+            this.cbxCor.Size = new System.Drawing.Size(83, 20);
+            this.cbxCor.TabIndex = 9;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbxCor);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtCodigo);
+            this.groupBox1.Controls.Add(this.cbxSexo);
+            this.groupBox1.Controls.Add(this.dtpDataNasc);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.lblExibirIdade);
+            this.groupBox1.Controls.Add(this.txtNomePaciente);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.mskCpf);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.mskRg);
+            this.groupBox1.Controls.Add(this.mskTelefone);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.txtMae);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.mskCelular);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtNacionalidade);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtNaturalidade);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.cbxGrauInstucao);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtProfissao);
+            this.groupBox1.Location = new System.Drawing.Point(6, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(872, 140);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dados pessoais";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txtCep);
+            this.groupBox2.Controls.Add(this.cbxUf);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.txtRua);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.txtBairro);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.txtCidade);
+            this.groupBox2.Location = new System.Drawing.Point(6, 229);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(872, 91);
+            this.groupBox2.TabIndex = 55;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Endereço";
+            // 
+            // cbxSituacao
+            // 
+            this.cbxSituacao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSituacao.FormattingEnabled = true;
+            this.cbxSituacao.Items.AddRange(new object[] {
+            "Alta",
+            "Óbito",
+            "Internado",
+            "Evasão",
+            "Transferência"});
+            this.cbxSituacao.Location = new System.Drawing.Point(97, 369);
+            this.cbxSituacao.Name = "cbxSituacao";
+            this.cbxSituacao.Size = new System.Drawing.Size(118, 21);
+            this.cbxSituacao.TabIndex = 56;
+            this.cbxSituacao.Visible = false;
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(21, 372);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(49, 13);
+            this.label25.TabIndex = 57;
+            this.label25.Text = "Situação";
+            this.label25.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox3.Controls.Add(this.txtResponsavel);
+            this.groupBox3.Controls.Add(this.mskTelefoneContatoAlternativo);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.txtContatoAlternativo);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Location = new System.Drawing.Point(6, 157);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Size = new System.Drawing.Size(872, 67);
+            this.groupBox3.TabIndex = 58;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Contato terceiros";
             // 
             // FrmCadastroPaciente
             // 

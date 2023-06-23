@@ -27,3 +27,6 @@ C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-
 C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\bin\Debug\Registro-de-internacao.pdb
 C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\bin\Debug\Registro-de-internacao.exe.config
 C:\Users\vinic\OneDrive\Área de Trabalho\Projeto hospital\Cadastro de paciente\Cadastro-paciente-hospital\obj\Debug\Cadastro-paciente-hospital.csproj.CopyComplete
+C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Movimentacao-pacientes.exe
+C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Movimentacao-pacientes.pdb
+C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Movimentacao-pacientes.exe.config
