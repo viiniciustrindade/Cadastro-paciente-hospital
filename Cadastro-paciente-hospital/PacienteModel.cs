@@ -27,6 +27,7 @@ namespace Cadastro_paciente_hospital
         public string rua { get; set; }
         public string bairro { get; set; }
         public string cidade { get; set; }
+        public string numero { get; set; }
         public string telefone { get; set; }
         public string celular { get; set; }
         public string nomeContato { get; set; }

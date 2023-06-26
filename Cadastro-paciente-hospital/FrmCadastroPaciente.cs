@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
+
 namespace Cadastro_paciente_hospital
 {
     public partial class FrmCadastroPaciente : Form
@@ -42,7 +43,8 @@ namespace Cadastro_paciente_hospital
             CarregarUsuariosGrid();
             LoadId();
             btnExcluir.Enabled = false;
-            cbxSituacao.Text = "Alta"; 
+            cbxSituacao.Text = "Novo";
+            txtCep.MaxLength = 8;
 
         }
         private int CalcularIdade(DateTime dataNascimento)
@@ -97,6 +99,7 @@ namespace Cadastro_paciente_hospital
                     row.Cells[colTelefoneContato.Index].Value = paciente.telefoneContato;
                     row.Cells[colObeservacoes.Index].Value = paciente.observacoes;
                     row.Cells[colSituacao.Index].Value = paciente.situacao;
+                    row.Cells[colNumero.Index].Value = paciente.numero;
                 }
             }
         }
@@ -124,9 +127,10 @@ namespace Cadastro_paciente_hospital
             txtContatoAlternativo.Text = "";
             mskTelefoneContatoAlternativo.Text = "";
             txtObservacoes.Text = "";
+            txtNumero.Text = "";
             cbxSituacao.Visible = false;
             label25.Visible = false;
-            cbxSituacao.Text = "Alta";
+            cbxSituacao.Text = "Novo";
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -176,7 +180,8 @@ namespace Cadastro_paciente_hospital
                                 nomeContato = txtContatoAlternativo.Text,
                                 telefoneContato = mskTelefoneContatoAlternativo.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 observacoes = txtObservacoes.Text,
-                                situacao = cbxSituacao.Text
+                                situacao = cbxSituacao.Text,
+                                numero = txtNumero.Text,
                             });
                             MessageBox.Show("Registro do paciente atualizado com sucesso!");
                             ApagarCampos();
@@ -208,9 +213,10 @@ namespace Cadastro_paciente_hospital
                                 nomeContato = txtContatoAlternativo.Text,
                                 telefoneContato = mskTelefoneContatoAlternativo.Text.Replace("(", "").Replace(")", "").Replace("-", ""),
                                 observacoes = txtObservacoes.Text,
-                                situacao = cbxSituacao.Text
+                                situacao = cbxSituacao.Text,
+                                numero = txtNumero.Text,
                             });
-                            MessageBox.Show("Registro do paciente Salvo com sucesso!");
+                            MessageBox.Show("Registro do paciente salvo com sucesso!");
                             ApagarCampos();
                         }
                     }
@@ -257,7 +263,6 @@ namespace Cadastro_paciente_hospital
                 MessageBox.Show($"Houve um problema ao excluir o registro!\n{ex.Message}");
             }
         }
-
         private void dadosGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex > -1 && e.ColumnIndex > -1)
@@ -287,6 +292,7 @@ namespace Cadastro_paciente_hospital
                 txtContatoAlternativo.Text = dadosGrid.Rows[e.RowIndex].Cells[colContatoAlternativo.Index].Value + "";
                 txtObservacoes.Text = dadosGrid.Rows[e.RowIndex].Cells[colObeservacoes.Index].Value + "";
                 cbxSituacao.Text = dadosGrid.Rows[e.RowIndex].Cells[colSituacao.Index].Value + "";
+                txtNumero.Text = dadosGrid.Rows[e.RowIndex].Cells[colNumero.Index].Value + "";
                 if (string.IsNullOrEmpty(this.cbxSexo.Text))
                 {
                     btnExcluir.Enabled = false;
@@ -303,7 +309,7 @@ namespace Cadastro_paciente_hospital
                 guardaMae = txtMae.Text;
                 guardaIdade = lblExibirIdade.Text;
                 CarregarUsuariosGrid();
-                if (cbxSituacao.Text == "Alta"||cbxSituacao.Text == "Evasão")
+                if (cbxSituacao.Text == "Alta" ||cbxSituacao.Text == "Evasão" ||cbxSituacao.Text == "Novo")
                 {
                     btnInternacao.Enabled = true;
                 }
@@ -337,7 +343,7 @@ namespace Cadastro_paciente_hospital
             if (!IsValidEmail(email))
             {
                 MessageBox.Show("O e-mail fornecido não é válido.", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Cancel = true; 
+                
             }
         }
         private bool IsValidEmail(string email)
@@ -370,6 +376,42 @@ namespace Cadastro_paciente_hospital
                 });
                 if (count > 0)
                 { MessageBox.Show("O RG fornecido ja foi cadastrado.", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error); e.Cancel = true; }
+            }
+        }
+
+        private void txtCep_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtCep.Text))
+            {
+                using (var ws = new WSCorreios.AtendeClienteClient())
+                {
+                    try
+                    {
+                        var endereco = ws.consultaCEP(txtCep.Text.Trim());
+
+                        cbxUf.Text = endereco.uf;
+                        txtCidade.Text = endereco.cidade;
+                        txtBairro.Text = endereco.bairro;
+                        txtRua.Text = endereco.end;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe um CEP válido...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+                MessageBox.Show("Somente números são permitidos!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

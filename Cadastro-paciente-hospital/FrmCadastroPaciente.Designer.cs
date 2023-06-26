@@ -104,11 +104,14 @@
             this.colTelefoneContato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObeservacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label24 = new System.Windows.Forms.Label();
             this.cbxUf = new System.Windows.Forms.ComboBox();
             this.cbxCor = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.cbxSituacao = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -251,7 +254,7 @@
             // 
             this.txtMae.Location = new System.Drawing.Point(91, 51);
             this.txtMae.Name = "txtMae";
-            this.txtMae.Size = new System.Drawing.Size(224, 20);
+            this.txtMae.Size = new System.Drawing.Size(170, 20);
             this.txtMae.TabIndex = 4;
             // 
             // label8
@@ -391,6 +394,7 @@
             this.txtCep.Size = new System.Drawing.Size(85, 20);
             this.txtCep.TabIndex = 18;
             this.txtCep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCep_KeyPress);
+            this.txtCep.Leave += new System.EventHandler(this.txtCep_Leave);
             // 
             // label16
             // 
@@ -599,7 +603,8 @@
             this.colContatoAlternativo,
             this.colTelefoneContato,
             this.colObeservacoes,
-            this.colSituacao});
+            this.colSituacao,
+            this.colNumero});
             this.dadosGrid.Location = new System.Drawing.Point(14, 396);
             this.dadosGrid.Name = "dadosGrid";
             this.dadosGrid.ReadOnly = true;
@@ -809,6 +814,13 @@
             this.colSituacao.ReadOnly = true;
             this.colSituacao.Visible = false;
             // 
+            // colNumero
+            // 
+            this.colNumero.HeaderText = "Número";
+            this.colNumero.Name = "colNumero";
+            this.colNumero.ReadOnly = true;
+            this.colNumero.Visible = false;
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -906,6 +918,8 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Controls.Add(this.txtNumero);
+            this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.txtCep);
             this.groupBox2.Controls.Add(this.cbxUf);
@@ -923,12 +937,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Endereço";
             // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(356, 52);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(54, 20);
+            this.txtNumero.TabIndex = 54;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(306, 55);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(44, 13);
+            this.label26.TabIndex = 53;
+            this.label26.Text = "Número";
+            // 
             // cbxSituacao
             // 
             this.cbxSituacao.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSituacao.FormattingEnabled = true;
             this.cbxSituacao.Items.AddRange(new object[] {
+            "Novo",
             "Alta",
             "Óbito",
             "Internado",
@@ -1061,6 +1093,8 @@
         private System.Windows.Forms.ComboBox cbxSituacao;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodPaciente;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUf;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNomePaciente;
@@ -1086,6 +1120,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelefoneContato;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObeservacoes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSituacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumero;
     }
 }
 
