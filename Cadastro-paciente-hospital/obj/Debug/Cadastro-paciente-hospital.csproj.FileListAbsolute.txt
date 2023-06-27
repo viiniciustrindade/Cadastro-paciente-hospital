@@ -32,3 +32,6 @@ C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Movimentacao-pacientes.exe.config
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Correios.Net.dll
 C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\Correios.Net.pdb
+C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\ConsultarPacientes.exe
+C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\ConsultarPacientes.pdb
+C:\Users\estagiario3\Desktop\Movtech-projeto-hospital\movtech-Cadastro-paciente-hospital\Cadastro-paciente-hospital\bin\Debug\ConsultarPacientes.exe.config

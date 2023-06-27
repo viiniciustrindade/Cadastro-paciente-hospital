@@ -121,6 +121,7 @@ namespace Cadastro_paciente_hospital
             txtCep.Text = "";
             txtRua.Text = "";
             txtBairro.Text = "";
+            cbxUf.SelectedIndex = -1;
             txtCidade.Text = "";
             mskTelefone.Text = "";
             mskCelular.Text = "";
@@ -131,6 +132,7 @@ namespace Cadastro_paciente_hospital
             cbxSituacao.Visible = false;
             label25.Visible = false;
             cbxSituacao.Text = "Novo";
+            btnInternacao.Enabled = false;
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -335,6 +337,8 @@ namespace Cadastro_paciente_hospital
             Registro_de_internacao.FrmRegistroDeInternacao frmRegistroDeInternacao = new Registro_de_internacao.FrmRegistroDeInternacao(guardaId, guardaNome, guardaMae, guardaIdade);
             frmRegistroDeInternacao.ShowDialog();
 
+            ApagarCampos();
+
         }
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
@@ -413,6 +417,12 @@ namespace Cadastro_paciente_hospital
                 e.Handled = true;
                 MessageBox.Show("Somente números são permitidos!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            ConsultarPacientes.FrmConsultaPaciente frmConsultaPaciente = new ConsultarPacientes.FrmConsultaPaciente();
+            frmConsultaPaciente.ShowDialog();
         }
     }
 }

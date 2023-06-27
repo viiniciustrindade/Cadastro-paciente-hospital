@@ -115,6 +115,7 @@
             this.cbxSituacao = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dadosGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -133,7 +134,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(160, 28);
+            this.label2.Location = new System.Drawing.Point(215, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 1;
@@ -154,7 +155,7 @@
             this.cbxSexo.Items.AddRange(new object[] {
             "M",
             "F"});
-            this.cbxSexo.Location = new System.Drawing.Point(197, 25);
+            this.cbxSexo.Location = new System.Drawing.Point(259, 25);
             this.cbxSexo.Name = "cbxSexo";
             this.cbxSexo.Size = new System.Drawing.Size(47, 21);
             this.cbxSexo.TabIndex = 1;
@@ -528,17 +529,17 @@
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(763, 37);
-            this.txtObservacoes.TabIndex = 23;
+            this.txtObservacoes.TabIndex = 24;
             // 
             // btnInternacao
             // 
             this.btnInternacao.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnInternacao.Enabled = false;
-            this.btnInternacao.Location = new System.Drawing.Point(790, 368);
+            this.btnInternacao.Location = new System.Drawing.Point(700, 368);
             this.btnInternacao.Margin = new System.Windows.Forms.Padding(2);
             this.btnInternacao.Name = "btnInternacao";
             this.btnInternacao.Size = new System.Drawing.Size(88, 21);
-            this.btnInternacao.TabIndex = 26;
+            this.btnInternacao.TabIndex = 27;
             this.btnInternacao.Text = "Internação";
             this.btnInternacao.UseVisualStyleBackColor = true;
             this.btnInternacao.Click += new System.EventHandler(this.btnInternacao_Click);
@@ -547,11 +548,11 @@
             // 
             this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnExcluir.Enabled = false;
-            this.btnExcluir.Location = new System.Drawing.Point(700, 368);
+            this.btnExcluir.Location = new System.Drawing.Point(610, 368);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(2);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(86, 21);
-            this.btnExcluir.TabIndex = 25;
+            this.btnExcluir.TabIndex = 26;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -559,11 +560,11 @@
             // btnSalvar
             // 
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSalvar.Location = new System.Drawing.Point(610, 368);
+            this.btnSalvar.Location = new System.Drawing.Point(520, 368);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(86, 21);
-            this.btnSalvar.TabIndex = 24;
+            this.btnSalvar.TabIndex = 25;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -611,7 +612,7 @@
             this.dadosGrid.RowHeadersWidth = 51;
             this.dadosGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dadosGrid.Size = new System.Drawing.Size(864, 222);
-            this.dadosGrid.TabIndex = 27;
+            this.dadosGrid.TabIndex = 29;
             this.dadosGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dadosGrid_CellMouseDoubleClick);
             // 
             // colCodPaciente
@@ -640,7 +641,7 @@
             // 
             // colSexo
             // 
-            this.colSexo.FillWeight = 20F;
+            this.colSexo.FillWeight = 10F;
             this.colSexo.HeaderText = "Sexo";
             this.colSexo.MinimumWidth = 6;
             this.colSexo.Name = "colSexo";
@@ -942,7 +943,7 @@
             this.txtNumero.Location = new System.Drawing.Point(356, 52);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(54, 20);
-            this.txtNumero.TabIndex = 54;
+            this.txtNumero.TabIndex = 23;
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // label26
@@ -976,7 +977,7 @@
             // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(21, 372);
+            this.label25.Location = new System.Drawing.Point(22, 372);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(49, 13);
             this.label25.TabIndex = 57;
@@ -1001,11 +1002,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contato terceiros";
             // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnConsultar.Location = new System.Drawing.Point(793, 368);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(86, 21);
+            this.btnConsultar.TabIndex = 28;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
             // FrmCadastroPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 628);
+            this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.cbxSituacao);
@@ -1095,6 +1109,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodPaciente;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUf;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNomePaciente;
